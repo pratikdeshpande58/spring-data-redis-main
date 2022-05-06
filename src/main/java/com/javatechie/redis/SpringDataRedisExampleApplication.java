@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
 
 @SpringBootApplication
 @RestController
@@ -17,7 +18,7 @@ public class SpringDataRedisExampleApplication {
     private PubSubDetailsDao dao;
 
     @PostMapping
-    public PubSubDetails save(@RequestBody PubSubDetails pubSubDetails) {
+    public Boolean save(@RequestBody PubSubDetails pubSubDetails) {
         return dao.save(pubSubDetails);
     }
 
@@ -39,5 +40,4 @@ public class SpringDataRedisExampleApplication {
     public static void main(String[] args) {
         SpringApplication.run(SpringDataRedisExampleApplication.class, args);
     }
-
 }
